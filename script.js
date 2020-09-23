@@ -1,35 +1,3 @@
-let firstBooksMap = new Map();
-firstBooksMap.set("Girl with a pearl earring", "https://openlibrary.org/books/OL41076M.json");
-firstBooksMap.set("Broken People", "https://openlibrary.org/books/OL28349977M.json");
-firstBooksMap.set("Solaris","https://openlibrary.org/books/OL5219384M.json");
-firstBooksMap.set("2030","https://openlibrary.org/works/OL16476135W.json");
-firstBooksMap.set("Six days of the condor","https://openlibrary.org/works/OL2455841W.json");
-firstBooksMap.set("Borne","https://openlibrary.org/works/OL17762236W.json");
-firstBooksMap.set("Foundation and Earth","https://openlibrary.org/works/OL46347W.json");
-firstBooksMap.set("Ancillary Justice","https://openlibrary.org/works/OL17062644W.json");
-firstBooksMap.set("The Three Body Problem","https://openlibrary.org/works/OL17335914W.json");
-firstBooksMap.set("Death's End","https://openlibrary.org/books/OL26805048M.json");
-
-window.onload = function() {
-    for (let value of firstBooksMap.values()) {
-    fetch(value)
-        .then((response) => {
-            return response.json()
-        })
-        .then((data) => {
-            let bookTitle = data.title;
-            let booksContainer = document.getElementById("booksContainer");
-            let newElement = document.createElement("div");
-            newElement.innerHTML = "<div class='grid-item'><span>" + bookTitle + "</span></div>";
-
-            booksContainer.appendChild(newElement);
-        })
-        .catch((err) => {
-            console.log(err, "there is an error!")
-        });
-    }
-};
-
 let kidsurl = "http://openlibrary.org/subjects/children.json?limit=10";
 let fantasyurl = "http://openlibrary.org/subjects/fantasy.json?limit=10";
 let horrorurl = "http://openlibrary.org/subjects/horror.json?limit=10";
@@ -40,23 +8,66 @@ let biographyurl = "http://openlibrary.org/subjects/biography.json?limit=10";
 let classicsurl = "http://openlibrary.org/subjects/classics.json?limit=10";
 let cookbookurl = "http://openlibrary.org/subjects/cookbook.json?limit=10";
 let comicsurl = "http://openlibrary.org/subjects/comics.json?limit=10";
+let popularurl = "http://openlibrary.org/subjects/popular.json?limit=10";
+
+let booksContainer = document.getElementById("booksContainer");
+let loader = document.getElementById("loader");
+let inputField = document.getElementById("searchInput");
+
+window.onload = switchBooks(popularurl);
+
 
 function switchBooks(url) {
-    let booksContainer = document.getElementById("booksContainer");
     booksContainer.innerHTML="";
+    loader.style.display="block";
+
     fetch(url)
         .then((response) => {
             return response.json()
         })
         .then((data) => {
+            console.log(data);
             let booksarray = data.works;
             for (let i=0; i<booksarray.length; i++) {
                 let bookTitle = booksarray[i].title;
+                let bookAuthors = booksarray[i].authors[0].name;
                 let booksContainer = document.getElementById("booksContainer");
                 let newElement = document.createElement("div");
-                newElement.innerHTML = "<div class='grid-item'><span>" + bookTitle + "</span></div>";
+                newElement.innerHTML = "<div class='grid-item'><span>" + bookTitle + ", " + "<br>" +bookAuthors+ "</span></div>";
                 booksContainer.appendChild(newElement);
             }
+        loader.style.display="none";
+        })
+        .catch((err) => {
+            console.log(err, "there is an error!")
+        });
+}
+
+
+function search () {
+    let inputValue = inputField.value;
+    let searchurl = "http://openlibrary.org/search.json?q=" + inputValue + "&limit=10";
+    loader.style.display="block";
+
+    booksContainer.innerHTML="";
+    fetch(searchurl)
+        .then((response) => {
+            return response.json()
+        })
+        .then((data) => {
+            console.log(data);
+            let booksarray = data.docs;
+            console.log(booksarray);
+            for (let i=0; i<booksarray.length; i++) {
+                let bookTitle = booksarray[i].title;
+                let bookAuthor = booksarray[i].author_name[0];
+                let booksContainer = document.getElementById("booksContainer");
+                let newElement = document.createElement("div");
+                newElement.innerHTML = "<div class='grid-item'><span>" + bookTitle + ", "+ "<br>" + bookAuthor+"</span></div>";
+                booksContainer.appendChild(newElement);
+                inputField.value="";
+            }
+            loader.style.display="none";
         })
         .catch((err) => {
             console.log(err, "there is an error!")

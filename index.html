@@ -9,22 +9,35 @@
 <body>
 <div id="mainContainer">
     <div id="header">
-        <span id="kids" onclick="switchBooks(kidsurl)">Children</span>
-        <span id="fantasy" onclick="switchBooks(fantasyurl)">Fantasy</span>
-        <span id="horror" onclick="switchBooks(horrorurl)">Horror</span>
-        <span id="history" onclick="switchBooks(historyurl)">History</span>
-        <span id="romance" onclick="switchBooks(romanceurl)">Romance</span>
-        <span id="poetry" onclick="switchBooks(poetryurl)">Poetry</span>
-        <span id="biography" onclick="switchBooks(biographyurl)">Biographies</span>
-        <span id="classics" onclick="switchBooks(classicsurl)">Classics</span>
-        <span id="cookbook" onclick="switchBooks(cookbookurl)">Cookbooks</span>
-        <span id="comics" onclick="switchBooks(comicsurl)">Comics</span>
-        <input id="searchInput" name="search" placeholder="Title, Author or ISBN">
-        <button id="searchButton"><i class="fa fa-search"></i></button>
+        <span id="kids" onclick="switchBooks(kidsurl)">children</span>
+        <span>.</span>
+        <span id="fantasy" onclick="switchBooks(fantasyurl)">fantasy</span>
+        <span>.</span>
+        <span id="horror" onclick="switchBooks(horrorurl)">horror</span>
+        <span>.</span>
+        <span id="history" onclick="switchBooks(historyurl)">history</span>
+        <span>.</span>
+        <span id="romance" onclick="switchBooks(romanceurl)">romance</span>
+        <span>.</span>
+        <span id="poetry" onclick="switchBooks(poetryurl)">poetry</span>
+        <span>.</span>
+        <span id="biography" onclick="switchBooks(biographyurl)">biography</span>
+        <span>.</span>
+        <span id="classics" onclick="switchBooks(classicsurl)">classics</span>
+        <span>.</span>
+        <span id="cookbook" onclick="switchBooks(cookbookurl)">cookbooks</span>
+        <span>.</span>
+        <span id="comics" onclick="switchBooks(comicsurl)">comics</span>
+
     </div>
     <div id="content">
         <div id="booksContainer" class="grid-container">
         </div>
+    </div>
+    <div class="loader" id="loader"></div>
+    <div id="footer">
+        <input id="searchInput" name="search" placeholder="Title, Author or ISBN">
+        <button id="searchButton" onclick="search()"><i class="fa fa-search"></i></button>
     </div>
 
 </div>

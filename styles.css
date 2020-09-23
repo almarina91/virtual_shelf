@@ -9,9 +9,8 @@
     display: grid;
     grid-template-columns:auto auto auto auto auto auto;
     grid-template-rows:auto auto auto auto auto auto auto auto;
-
-
 }
+
 #header {
     background-color: white;
     grid-row: 1/2;
@@ -22,22 +21,33 @@
     display: flex;
     align-items: center;
     justify-content: center;
-
+}
+#kids:hover, #biography:hover,
+#fantasy:hover, #horror:hover,
+#history:hover, #romance:hover,
+#poetry:hover, #classics:hover,
+#cookbook:hover, #comics:hover {
+    color: yellow;
+    cursor: grab;
 }
 
 #searchButton {
-    height: 50px;
-    width: 50px;
+    height: 25px;
+    width: 25px;
     border-width: 0;
-    background-color:lightseagreen;
-    color: white;
+    background-color:white;
+    color: lightseagreen;
+}
+
+#searchButton:hover {
+    cursor: grab;
+    font-size: 15px;
 }
 
 #searchInput {
-    display: none;
-    width: 400px;
-    height: 50px;
-    font-size: 20px;
+    width: 250px;
+    height: 25px;
+    font-size: 10px;
 }
 
 
@@ -50,24 +60,55 @@
     text-align:center;
 }
 
+.loader {
+    display:none;
+    grid-row: 5/7;
+    grid-column: 3/3;
+    margin-left: auto;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border: 5px solid #f3f3f3; /* Light grey */
+    border-top: 5px solid #f199f6; /* pink */
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#footer {
+    background-color: white;
+    grid-row: 7/7;
+    grid-column: 2/6;
+    padding-top: 30px;
+    padding-bottom: 50px;
+    text-align:center;
+}
+
 
 
 .grid-container {
     display: grid;
     grid-template-columns: auto auto auto auto auto;
-    grid-gap: 15px;
+    grid-gap: 20px;
     justify-content: center;
     align-items: center;
-
 }
 
 .grid-item {
-    background-color: mistyrose;
-    height: 200px;
-    width: 200px;
+    height: 170px;
+    width: 170px;
     display: flex;
     align-items: center;
     justify-content: center;
+    background-color: darkseagreen;
+    color: white;
+    border-radius: 50%;
+    font-size:12px;
 }
 /*animation of books on hover */
 
@@ -78,28 +119,28 @@
 
 @-webkit-keyframes shadow-pop-tr {
     0% {
-        -webkit-box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
-        box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
+        -webkit-box-shadow: 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8;
+        box-shadow: 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8;
         -webkit-transform: translateX(0) translateY(0);
         transform: translateX(0) translateY(0);
     }
     100% {
-        -webkit-box-shadow: 1px -1px #3e3e3e, 2px -2px #3e3e3e, 3px -3px #3e3e3e, 4px -4px #3e3e3e, 5px -5px #3e3e3e, 6px -6px #3e3e3e, 7px -7px #3e3e3e, 8px -8px #3e3e3e;
-        box-shadow: 1px -1px #3e3e3e, 2px -2px #3e3e3e, 3px -3px #3e3e3e, 4px -4px #3e3e3e, 5px -5px #3e3e3e, 6px -6px #3e3e3e, 7px -7px #3e3e3e, 8px -8px #3e3e3e;
+        -webkit-box-shadow: 1px -1px #f6c3e8, 2px -2px #f6c3e8, 3px -3px #f6c3e8, 4px -4px #f6c3e8, 5px -5px #f6c3e8, 6px -6px #f6c3e8, 7px -7px #f6c3e8, 8px -8px #f6c3e8;
+        box-shadow: 1px -1px #f6c3e8, 2px -2px #f6c3e8, 3px -3px #f6c3e8, 4px -4px #f6c3e8, 5px -5px #f6c3e8, 6px -6px #f6c3e8, 7px -7px #f6c3e8, 8px -8px #f6c3e8;
         -webkit-transform: translateX(-8px) translateY(8px);
         transform: translateX(-8px) translateY(8px);
     }
 }
 @keyframes shadow-pop-tr {
     0% {
-        -webkit-box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
-        box-shadow: 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e, 0 0 #3e3e3e;
+        -webkit-box-shadow: 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8;
+        box-shadow: 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8, 0 0 #f6c3e8;
         -webkit-transform: translateX(0) translateY(0);
         transform: translateX(0) translateY(0);
     }
     100% {
-        -webkit-box-shadow: 1px -1px #3e3e3e, 2px -2px #3e3e3e, 3px -3px #3e3e3e, 4px -4px #3e3e3e, 5px -5px #3e3e3e, 6px -6px #3e3e3e, 7px -7px #3e3e3e, 8px -8px #3e3e3e;
-        box-shadow: 1px -1px #3e3e3e, 2px -2px #3e3e3e, 3px -3px #3e3e3e, 4px -4px #3e3e3e, 5px -5px #3e3e3e, 6px -6px #3e3e3e, 7px -7px #3e3e3e, 8px -8px #3e3e3e;
+        -webkit-box-shadow: 1px -1px #f6c3e8, 2px -2px #f6c3e8, 3px -3px #f6c3e8, 4px -4px #f6c3e8, 5px -5px #f6c3e8, 6px -6px #f6c3e8, 7px -7px #f6c3e8, 8px -8px #f6c3e8;
+        box-shadow: 1px -1px #f6c3e8, 2px -2px #f6c3e8, 3px -3px #f6c3e8, 4px -4px #f6c3e8, 5px -5px #f6c3e8, 6px -6px #f6c3e8, 7px -7px #f6c3e8, 8px -8px #f6c3e8;
         -webkit-transform: translateX(-8px) translateY(8px);
         transform: translateX(-8px) translateY(8px);
     }
