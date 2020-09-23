@@ -26,12 +26,10 @@ function switchBooks(url) {
             return response.json()
         })
         .then((data) => {
-            console.log(data);
             let booksarray = data.works;
             for (let i=0; i<booksarray.length; i++) {
                 let bookTitle = booksarray[i].title;
                 let bookAuthors = booksarray[i].authors[0].name;
-                let booksContainer = document.getElementById("booksContainer");
                 let newElement = document.createElement("div");
                 newElement.innerHTML = "<div class='grid-item'><span>" + bookTitle + ", " + "<br>" +bookAuthors+ "</span></div>";
                 booksContainer.appendChild(newElement);
@@ -55,13 +53,10 @@ function search () {
             return response.json()
         })
         .then((data) => {
-            console.log(data);
             let booksarray = data.docs;
-            console.log(booksarray);
             for (let i=0; i<booksarray.length; i++) {
                 let bookTitle = booksarray[i].title;
                 let bookAuthor = booksarray[i].author_name[0];
-                let booksContainer = document.getElementById("booksContainer");
                 let newElement = document.createElement("div");
                 newElement.innerHTML = "<div class='grid-item'><span>" + bookTitle + ", "+ "<br>" + bookAuthor+"</span></div>";
                 booksContainer.appendChild(newElement);
